@@ -40,9 +40,16 @@ export default class AnalysesController {
           ? FinancialAnalysisService.calculateEpsGrowth(epsForward, epsTrailingTwelveMonths)
           : 'Not Available'
 
+      const validEpsGrowth: number | null =
+        typeof epsGrowth === 'number' && !isNaN(epsGrowth)
+          ? epsGrowth
+          : typeof epsGrowth === 'string' && !isNaN(parseFloat(epsGrowth))
+            ? parseFloat(epsGrowth)
+            : null
+
       const result =
         typeof peRatio === 'number'
-          ? FinancialAnalysisService.evaluateCompany(peRatio, epsGrowth)
+          ? FinancialAnalysisService.evaluateCompany(peRatio, validEpsGrowth)
           : 'Data is insufficient for valuation.'
 
       return response.status(200).send({
