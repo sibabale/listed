@@ -5,7 +5,7 @@ import env from '#start/env'
 import FinancialAnalysisService from '#services/financial_analysis_service'
 
 export default class AnalysesController {
-  async evaluateCompanyValuation({ request, response }: HttpContext) {
+  async PEAnanlysis({ request, response }: HttpContext) {
     const symbol = request.input('symbol') as string
     if (!symbol) {
       return response.status(400).send({

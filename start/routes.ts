@@ -16,4 +16,4 @@ router.get('/', async () => {
   }
 })
 
-router.get('analyse', [AnalysesController, 'evaluateCompanyValuation'])
+router.get('pe-analysis', [AnalysesController, 'PEAnanlysis'])
